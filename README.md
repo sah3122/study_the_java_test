@@ -20,3 +20,11 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
             * 각 테스트 시작 전 / 후 실행
         * @Disabled
             * 실행하지 않을 테스트 지정
+* JUnit 5 : 테스트 이름 표기하기
+    * @DisplayNameGeneration
+        * Methods와 Class 레퍼런스를 사용해서 테스트 이름을 표기하는 방법 설정
+        * 기본 구현체로 ReplaceUnderscores 제공
+    * @DisplayName
+        * 어떤 테스트 인지 테스트 이름을 보다 쉽게 표현할 수 있는 방법을 제공하는 애노테이션
+        * @DisplayNameGeneration보다 우선 순위가 높다
+      
