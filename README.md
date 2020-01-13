@@ -37,4 +37,14 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
         * 특정 시간 안에 실행이 완료되는지 확인 : assertTimeout(duration, executable)
     * 마지막 매개변수로 Supplier<String> 타입의 인스턴스를 람다 형태로 제공할 수 있다.
         * 복잡한 메시지 생성해야 하는 경우 사용하면 실패한 경우에만 해당 메시지를 만들게 할 수 있다.
-    
+* JUnit 5 : 조건에 따라 테스트 실행하기
+    * 특정한 조건을 만족하는 경우에 테스트를 실행하는 방법
+    * org.junit.jupiter.api.Assumptions.*
+        * assumeTrue(조건)
+        * assumingThat(조건, 테스트)
+    * @Enabled__ 와 @Disabled__
+        * OnOS
+        * OnJre
+        * IfSystemProperty
+        * IfEnvironmentVariable
+        * If

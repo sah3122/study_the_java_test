@@ -1,11 +1,15 @@
 package me.study.thejavatest;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
 import java.util.function.Supplier;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StudyTest {
@@ -33,9 +37,48 @@ class StudyTest {
     }
 
     @Test
-    @Disabled
+    @DisplayName("스터디 만들기 2")
     void created1() {
-        System.out.println("create1");
+        String test_env = System.getenv("TEST_ENV");
+        assumeTrue("LOCAL".equalsIgnoreCase(test_env));
+        assumingThat("LOCAL".equalsIgnoreCase(test_env), () -> {
+            System.out.println("local");
+            Study actual = new Study(10);
+            assertThat(actual.getLimit()).isGreaterThan(0);
+        });
+
+        Study actual = new Study(10);
+        assertThat(actual.getLimit()).isGreaterThan(0);
+    }
+
+    @Test
+    @DisplayName("스터디 만들기 3")
+    @EnabledOnOs(OS.MAC) // DisabledOnOS
+    void created_on_mac() {
+        String test_env = System.getenv("TEST_ENV");
+
+        Study actual = new Study(10);
+        assertThat(actual.getLimit()).isGreaterThan(0);
+    }
+
+    @Test
+    @DisplayName("스터디 만들기 4")
+    @EnabledOnJre({JRE.JAVA_8, JRE.JAVA_9})
+    void created_on_jre() {
+        String test_env = System.getenv("TEST_ENV");
+
+        Study actual = new Study(10);
+        assertThat(actual.getLimit()).isGreaterThan(0);
+    }
+
+    @Test
+    @DisplayName("스터디 만들기 4")
+    @EnabledIfEnvironmentVariable(named = "TEST_ENV", matches = "local")
+    void created_on_env() {
+        String test_env = System.getenv("TEST_ENV");
+
+        Study actual = new Study(10);
+        assertThat(actual.getLimit()).isGreaterThan(0);
     }
 
     @BeforeAll
