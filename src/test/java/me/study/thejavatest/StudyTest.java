@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
 class StudyTest {
     @Test
     @DisplayName("스터디 만들기")
+    @Tag("fast")
     void create() {
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> new Study(-10));
         String message = illegalArgumentException.getMessage();
