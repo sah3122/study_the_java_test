@@ -57,4 +57,38 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
     * 메이븐에서 테스트 필터
 * 커스텀 태그
     * JUnit5에서 제공하는 META Annotation을 활용해서 만들수있다.
+* 테스트 반복하기
+    * @RepeatedTest
+        * 반복 횟수와 반복 테스트 이름을 설정할 수 있다.
+            * {displayName}
+            * {currentRepetition}
+            * {totalRepetitions}
+
+        * RepetitionInfo 타입의 인자를 받을 수 있다.
+    * @ParameterizedTest
+        * 테스트에 여러 다른 매개변수를 대입해가며 반복 실행한다.
+            * {displayName}
+            * {index}
+            * {arguments}
+            * {0}, {1}, ...
+    * 인자 값들의 소스
+        * @ValueSource
+        * @NullSource, @EmptySource, @NullAndEmptySource
+        * @EnumSource
+        * @MethodSource
+        * @CvsSource
+        * @CvsFileSource
+        * @ArgumentSource
+    * 인자 값 타입 변환
+        * 암묵적인 타입 변환
+            * https://junit.org/junit5/docs/current/user-guide/#writing-tests-parameterized-tests-argument-conversion-implicit
+        * 명시적인 타입 변환
+            * SimpleArgumentConverter 상속 받은 구현체 제공
+            * @ConvertWith
+        * 인자 값 조합
+            * ArgumentsAccessor
+            * 커스텀 Asscessor
+                * ArgumentsAggregator 인터페이스 구현
+                * @AggregateWith
+                
                         
