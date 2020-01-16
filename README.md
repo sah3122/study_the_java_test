@@ -99,4 +99,12 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
         * 테스트 클래스당 인스턴스를 하나만 만들어 사용한다.
         * 경우에 따라, 테스트 간에 공유하는 모든 상태를  @BeforeEach 또는 @AfterEach에서 초기화 할 필요가 있다.
         * @BeforeAll과 @AfterAll을 인스턴스 메소드 또는 인터페이스에 정의한 default 메소드로 정의할 수 있다.                                
-                        
+* 테스트 순서
+    * 실행할 테스트 메소드는 특정한 순서에 의해 실행되지만 어떻게 그 순서를 정하는지는 의도적으로 분명하지 않다.
+    * 경우에 따라 특정 순서대로 테스트를 실행하고 싶을 때도 있다. 그 경우애는 테스트 메소드를 원하는 순서에 따라 실행하도록 @TestInstance(Lifecycle.PER_CLASS) <br>
+      와 함꼐 @TestMethodOrder를 사용할 수 있다.
+        - MethodOrder 구현체를 설정한다.
+        - 기본 구현체
+            - Alphanumeric
+            - OrderAnnotation
+            - Random                        

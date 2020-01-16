@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudyTest {
     int value = 1;
 
@@ -32,12 +33,14 @@ class StudyTest {
         System.out.println(value++);
     }
 
+    @Order(2)
     @Test
     void createTest2() {
         System.out.println(this);
         System.out.println(value++);
     }
 
+    @Order(1)
     @FastTest
     @DisplayName("스터디 만들기")
     void create() {
