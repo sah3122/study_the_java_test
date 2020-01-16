@@ -22,11 +22,26 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class StudyTest {
+    int value = 1;
+
+    @Test
+    void createTest() {
+        System.out.println(this);
+        System.out.println(value++);
+    }
+
+    @Test
+    void createTest2() {
+        System.out.println(this);
+        System.out.println(value++);
+    }
 
     @FastTest
     @DisplayName("스터디 만들기")
     void create() {
+        System.out.println(this);
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> new Study(-10));
         String message = illegalArgumentException.getMessage();
         assertEquals("limit은 0 보다 커야 한다.", message);
@@ -50,6 +65,7 @@ class StudyTest {
     @SlowTest
     @DisplayName("스터디 만들기 2")
     void created1() {
+        System.out.println(this);
         String test_env = System.getenv("TEST_ENV");
         assumeTrue("LOCAL".equalsIgnoreCase(test_env));
         assumingThat("LOCAL".equalsIgnoreCase(test_env), () -> {
