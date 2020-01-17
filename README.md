@@ -118,6 +118,24 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
         * junit.jupiter.conditions.deactivate = org.junit.*DisabledCondition
     * 테스트 이름 표기 전략 설정
         * junit.jupiter.displayname.generator.default = org.junit.jupiter.api.DisplayNameGenerator$ReplaceUnderscores
+* 확장 모델
+    * JUnit 4의 확장 모델은  @RunWith(Runner), TestRule
+    * JUnit 5의 확장 모델은 단 하나, Extension
+    
+    * 확장 모델 등록 방법
+        * 선언적인 등록 @ExtensionWith
+        * 프로그래밍 등록 @RegisterExtention
+        * 자동 등록 자바 ServiceLoader 이용
+    * 확장 모델 만드는 방법
+        * 테스트 실행 조건
+        * 테스트 인스턴스 팩토리
+        * 테스트 인스턴스 후 처리기
+        * 테스트 매개별수 리졸버
+        * 테스트 라이프사이클 콜백 
+        * 예외 처리
+        * ...
+       
+            
     
 
                                                 
