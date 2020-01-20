@@ -134,6 +134,17 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
         * 테스트 라이프사이클 콜백 
         * 예외 처리
         * ...
+* Junit 4 마이그레이션
+    * junit-veintage-engine을 의존성으로 추가하면, JUnit 5의 junit-platform으로 JUnit 3과 4로 작성된 테스트를 실행할 수 있다.
+    * @Rule은 기본적으로 지원하지 않지만 junit-jupiter-migrationsupport 모듈이 제공하는 @EnableRuleMigrationSupport를 사용하면 다음 타입의 Rule을 지원한다.
+        * ExternalResource
+        * Verifier
+        * ExpectedException
+    * Junit 4 -> Junit 5
+        * @Category(Class) -> @Tag(String) 
+        * @RunWith, @Rule, @ClassRule -> @ExtendWith, @RegisterExtension
+        * @Ignore -> @Disabled
+        * @Before, @After, @BeforeClass, @AfterClass -> @BeforeEach, @AfterEach, @BeforeAll, @AfterAll                 
        
             
     
