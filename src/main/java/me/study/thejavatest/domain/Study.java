@@ -1,8 +1,26 @@
-package me.study.thejavatest;
+package me.study.thejavatest.domain;
 
+import me.study.thejavatest.StudyStatus;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Study {
+    @Id @GeneratedValue
+    private Long id;
     private int limit;
     private StudyStatus status = StudyStatus.DRAFT;
+    private Member owner;
+
+    public Member getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Member owner) {
+        this.owner = owner;
+    }
 
     private String name;
 
