@@ -5,6 +5,7 @@ import me.study.thejavatest.domain.Study;
 import me.study.thejavatest.member.MemberService;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -48,6 +49,15 @@ class StudyServiceTest {
             memberService.validate();
         });
         assertNotNull(studyService);
+
+        verify(memberService, times(1)).notify(study);
+        verify(memberService, times(1)).notify(member);
+        verify(memberService, never()).validate();
+
+        InOrder inOrder = inOrder(memberService);
+        inOrder.verify(memberService).notify(study);
+
+        verifyNoInteractions(memberService);
     }
 
 }
