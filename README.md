@@ -177,4 +177,13 @@ Inflearn 더 자바, 애플리케이션을 테스트하는 다양한 방법
         * 특정 메소드가 특정 매개변수로 몇번 호출 됬는지, 최소 한번은 호출 됐는지, 전혀 호출되지 않았는지.
         * 어떤 순서대로 호출됐는지
         * 특정시간 이내에 호출됐는지
-        * 특정 시점 이후에 아무 일도 벌어지지 않았는지.                                                                 
+        * 특정 시점 이후에 아무 일도 벌어지지 않았는지.        
+* Mockito BDD 스타일 API
+    * BDD : 애플리케이션이 어떻게 행동 해야 하는지에 대한 공통된 이해를 구성하는 방법으로, TDD에서 창안.
+    * 행동에 대한 스펙
+        * Title
+        * Narrative
+            * As a / I want / So That
+        * Acceptance criteria
+            * Given / When / Then
+        * Mockito는 BddMockito라는 클래스를 통해 BDD 스타일의 API를 제공한다.                                                                 

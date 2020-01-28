@@ -14,6 +14,8 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -41,6 +43,9 @@ class StudyServiceTest {
         when(memberService.findById(1L)).thenReturn(Optional.of(member)); // stubbing
         when(memberService.findById(any())).thenReturn(Optional.of(member))
                 .thenReturn(Optional.of(member)); // chaining stubbing
+        //BDD
+        given(memberService.findById(1L)).willReturn(Optional.of(member));
+        given(studyRepository.save(study)).willReturn(study);
 
         studyService.createNewStudy(1L, study);
         doThrow(new IllegalArgumentException()).when(memberService).validate();
@@ -56,6 +61,9 @@ class StudyServiceTest {
 
         InOrder inOrder = inOrder(memberService);
         inOrder.verify(memberService).notify(study);
+        //BDD
+        then(memberService).should(times(1)).notify(study);
+        then(memberService).shouldHaveNoMoreInteractions();
 
         verifyNoInteractions(memberService);
     }
